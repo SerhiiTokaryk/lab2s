@@ -1,0 +1,131 @@
+class Employee:
+    def __init__(self, emp_id, first_name, last_name, phone, specialty):
+        self.id = emp_id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.phone = phone
+        self.specialty = specialty
+
+    def __str__(self):
+        return f"[{self.id}] {self.first_name} {self.last_name} — {self.specialty}"
+
+
+class Supplier:
+    def __init__(self, supplier_id, address, first_name, last_name, phone):
+        self.id = supplier_id
+        self.address = address
+        self.first_name = first_name
+        self.last_name = last_name
+        self.phone = phone
+
+    def __str__(self):
+        return f"[{self.id}] {self.first_name} {self.last_name}, {self.address}"
+
+
+class Product:
+    def __init__(self, product_id, supplier_id, quantity, price, delivery_date):
+        self.product_id = product_id
+        self.supplier_id = supplier_id
+        self.quantity = quantity
+        self.price = price
+        self.delivery_date = delivery_date
+
+    def __str__(self):
+        return f"[{self.product_id}] постачальник {self.supplier_id}, кількість: {self.quantity}, ціна: {self.price} грн"
+
+
+class Meal:
+    def __init__(self, meal_id, name, price):
+        self.id = meal_id
+        self.name = name
+        self.price = price
+
+    def __str__(self):
+        return f"[{self.id}] {self.name} — {self.price} грн"
+
+
+class AlcoholDrink:
+    def __init__(self, drink_id, name, price):
+        self.id = drink_id
+        self.name = name
+        self.price = price
+
+    def __str__(self):
+        return f"[{self.id}] {self.name} (алк.) — {self.price} грн"
+
+
+class NonAlcoholDrink:
+    def __init__(self, drink_id, name, price):
+        self.id = drink_id
+        self.name = name
+        self.price = price
+
+    def __str__(self):
+        return f"[{self.id}] {self.name} (безалк.) — {self.price} грн"
+
+
+class Bill:
+    def __init__(self, bill_id, table_number, meal_counter, drink_counter, total_sum, employee_id):
+        self.id = bill_id
+        self.table_number = table_number
+        self.meal_counter = meal_counter
+        self.drink_counter = drink_counter
+        self.total_sum = total_sum
+        self.employee_id = employee_id
+
+    def __str__(self):
+        return f"Рахунок №{self.id} | Столик {self.table_number} | Сума: {self.total_sum} грн"
+
+employees = [
+    Employee(1, "Іван", "Петренко", "0991112233", "офіціант"),
+    Employee(2, "Марія", "Коваленко", "0974455667", "кухар")
+]
+
+suppliers = [
+    Supplier(1, "м. Львів, вул. Шевченка 10", "Олег", "Гнатюк", "0931234567")
+]
+
+products = [
+    Product(1, 1, 20, 150.0, "2025-10-10"),
+    Product(2, 1, 15, 200.0, "2025-10-15")
+]
+
+meals = [
+    Meal(1, "Паста Карбонара", 180.0),
+    Meal(2, "Борщ український", 120.0)
+]
+
+alcohol_drinks = [
+    AlcoholDrink(1, "Вино червоне", 250.0),
+    AlcoholDrink(2, "Пиво світле", 90.0)
+]
+
+non_alcohol_drinks = [
+    NonAlcoholDrink(1, "Сік апельсиновий", 60.0),
+    NonAlcoholDrink(2, "Мінералка", 40.0)
+]
+
+bills = [
+    Bill(1, 5, 2, 1, 400.0, 1),
+    Bill(2, 2, 1, 2, 370.0, 2)
+]
+
+print("\nПрацівники:")
+for e in employees:
+    print(e)
+
+print("\nПостачальники:")
+for s in suppliers:
+    print(s)
+
+print("\nСтрави:")
+for m in meals:
+    print(m)
+
+print("\nНапої:")
+for d in alcohol_drinks + non_alcohol_drinks:
+    print(d)
+
+print("\nРахунки:")
+for b in bills:
+    print(b)
